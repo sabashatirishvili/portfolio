@@ -6,8 +6,6 @@
 # Ignore static files
 /static/
 
-# Ignore media files
-/media/
 # Ignore virtual environment
 /genv/
 /venv/
