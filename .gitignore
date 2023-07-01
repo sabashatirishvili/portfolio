@@ -2,10 +2,6 @@
 *.sqlite3
 **/migrations/
 
-
-# Ignore static files
-/static/
-
 # Ignore virtual environment
 /genv/
 /venv/
