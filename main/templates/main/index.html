@@ -1,28 +1,167 @@
-{% load static %}
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Document</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
-</head>
-<body>
-  <div class="page container-fluid">
-    <div class="section1 row align-bottom">
-      <img src="{% static 'main/img/top.png' %}" alt="TOP IMAGE" class="img-fluid">
-      <div class="title">
-        <h1 class="name">SABA SHATIRISHVILI,</h1>
-        <h1 class="prof">WEB DEVELOPER</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}" />
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <div class="nav-container">
+          <div class="photo-container">
+            <img src="{% static 'main/img/photo.JPG' %}" alt="" />
+          </div>
+          <div class="nav">
+            <a href="" class="first nav-link">Skills</a>
+            <a href="" class="nav-link">Projects</a>
+            <a href="" class="nav-link">Contact</a>
+            <a href="">
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 22 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11 17C9.4087 17 7.88258 16.3679 6.75736 15.2426C5.63214 14.1174 5 12.5913 5 11C5 9.4087 5.63214 7.88258 6.75736 6.75736C7.88258 5.63214 9.4087 5 11 5C12.5913 5 14.1174 5.63214 15.2426 6.75736C16.3679 7.88258 17 9.4087 17 11C17 12.5913 16.3679 14.1174 15.2426 15.2426C14.1174 16.3679 12.5913 17 11 17ZM10 0H12V3H10V0ZM10 19H12V22H10V19ZM2.515 3.929L3.929 2.515L6.05 4.636L4.636 6.05L2.515 3.93V3.929ZM15.95 17.364L17.364 15.95L19.485 18.071L18.071 19.485L15.95 17.364ZM18.071 2.514L19.485 3.929L17.364 6.05L15.95 4.636L18.071 2.515V2.514ZM4.636 15.95L6.05 17.364L3.929 19.485L2.515 18.071L4.636 15.95ZM22 10V12H19V10H22ZM3 10V12H0V10H3Z"
+                  fill="white"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div id="home-page">
+      <div class="hdr-container">
+        <header class="home-container">
+          <div class="title-container">
+            <h1>Saba Shatirishvili,</h1>
+            <div class="subtitle">Web Developer</div>
+          </div>
+          <a href="#skills">See More</a>
+        </header>
       </div>
     </div>
-    <div class="section2 row"></div>
-    <div class="section3 row"></div>
-  </div>
+    <div id="skills">
+      <section class="page-container">
+        <div class="skills-container">
+          <h3>SKILLS</h3>
+          <div class="category">
+            <div>Front-end</div>
+            <div>Back-end</div>
+            <div>Miscellaneous</div>
+          </div>
+          <div class="skill-list">
+            <div>HTML</div>
+            <div>CSS</div>
+            <div>Javascript</div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div id="projects">
+      <section class="p-container">
+        <h3>PROJECTS</h3>
+        <div class="project-list">
+          {% for project in projects %}
+          <div class="project">
+            <img src="{% static 'main/img/projects/' %}{{ project.image_static_url }}" alt="" class="" />
+            <div class="attr">
+              <div class="info">
+                <div class="p-head">
+                  <div class="name">{{project.title}}</div>
+                  <div class="links">
+                    <a href="{{project.github_link}}" class="gh-link">
+                      <svg
+                        width="20"
+                        height="21"
+                        viewBox="0 0 20 21"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10 0.5C4.475 0.5 1.45954e-06 4.975 1.45954e-06 10.5C-0.00113276 12.5993 0.658815 14.6456 1.88622 16.3487C3.11362 18.0517 4.84615 19.3251 6.838 19.988C7.338 20.075 7.525 19.775 7.525 19.512C7.525 19.275 7.512 18.488 7.512 17.65C5 18.113 4.35 17.038 4.15 16.475C4.037 16.187 3.55 15.3 3.125 15.062C2.775 14.875 2.275 14.412 3.112 14.4C3.9 14.387 4.462 15.125 4.65 15.425C5.55 16.937 6.988 16.512 7.562 16.25C7.65 15.6 7.912 15.163 8.2 14.913C5.975 14.663 3.65 13.8 3.65 9.975C3.65 8.887 4.037 7.988 4.675 7.287C4.575 7.037 4.225 6.012 4.775 4.637C4.775 4.637 5.612 4.375 7.525 5.663C8.33906 5.43706 9.18017 5.32334 10.025 5.325C10.875 5.325 11.725 5.437 12.525 5.662C14.437 4.362 15.275 4.638 15.275 4.638C15.825 6.013 15.475 7.038 15.375 7.288C16.012 7.988 16.4 8.875 16.4 9.975C16.4 13.813 14.063 14.663 11.838 14.913C12.2 15.225 12.513 15.825 12.513 16.763C12.513 18.1 12.5 19.175 12.5 19.513C12.5 19.775 12.688 20.087 13.188 19.987C15.173 19.3168 16.8979 18.041 18.1199 16.3392C19.3419 14.6373 19.9994 12.5951 20 10.5C20 4.975 15.525 0.5 10 0.5Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </a>
+                    <a href="" class="link">
+                      <svg
+                        width="18"
+                        height="19"
+                        viewBox="0 0 18 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M14.6568 12.328L13.2428 10.914L14.6568 9.5C15.0282 9.12856 15.3229 8.68759 15.5239 8.20228C15.7249 7.71696 15.8284 7.19681 15.8284 6.6715C15.8284 6.1462 15.7249 5.62605 15.5239 5.14073C15.3229 4.65542 15.0282 4.21445 14.6568 3.843C14.2853 3.47156 13.8444 3.17691 13.359 2.97589C12.8737 2.77487 12.3536 2.6714 11.8283 2.6714C11.303 2.6714 10.7828 2.77487 10.2975 2.97589C9.81218 3.17691 9.37121 3.47156 8.99977 3.843L7.58577 5.257L6.17177 3.843L7.58577 2.429C8.71408 1.31892 10.2353 0.699659 11.8181 0.706104C13.401 0.71255 14.9171 1.34418 16.0364 2.46341C17.1556 3.58265 17.7872 5.0988 17.7937 6.68162C17.8001 8.26444 17.1808 9.78569 16.0708 10.914L14.6568 12.328ZM11.8278 15.157L10.4138 16.571C9.85829 17.1356 9.19652 17.5846 8.46663 17.8922C7.73675 18.1998 6.95319 18.3598 6.16115 18.363C5.36911 18.3662 4.58428 18.2126 3.85191 17.911C3.11954 17.6094 2.45414 17.1658 1.89408 16.6057C1.33402 16.0456 0.890389 15.3802 0.588778 14.6479C0.287167 13.9155 0.133543 13.1307 0.136768 12.3386C0.139994 11.5466 0.300003 10.763 0.607569 10.0331C0.915134 9.30325 1.36417 8.64148 1.92877 8.086L3.34277 6.672L4.75677 8.086L3.34277 9.5C2.97133 9.87145 2.67668 10.3124 2.47566 10.7977C2.27463 11.283 2.17117 11.8032 2.17117 12.3285C2.17117 12.8538 2.27463 13.374 2.47566 13.8593C2.67668 14.3446 2.97133 14.7856 3.34277 15.157C3.71421 15.5284 4.15518 15.8231 4.6405 16.0241C5.12581 16.2251 5.64597 16.3286 6.17127 16.3286C6.69657 16.3286 7.21673 16.2251 7.70204 16.0241C8.18736 15.8231 8.62833 15.5284 8.99977 15.157L10.4138 13.743L11.8278 15.157ZM11.8278 5.257L13.2428 6.672L6.17177 13.742L4.75677 12.328L11.8278 5.257Z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="desc">
+                {{project.description}}
+              </div>
+              <div class="tech">React - Bootstrap - Styled Components</div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+    <div id="footer">
+      <footer>
+        <div class="footer-container">
+          <h3>CONTACT</h3>
+          <div class="social">
+            <a href="">
+              <svg
+                width="20"
+                height="18"
+                viewBox="0 0 20 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1 0H19C19.2652 0 19.5196 0.105357 19.7071 0.292893C19.8946 0.48043 20 0.734784 20 1V17C20 17.2652 19.8946 17.5196 19.7071 17.7071C19.5196 17.8946 19.2652 18 19 18H1C0.734784 18 0.48043 17.8946 0.292893 17.7071C0.105357 17.5196 0 17.2652 0 17V1C0 0.734784 0.105357 0.48043 0.292893 0.292893C0.48043 0.105357 0.734784 0 1 0ZM10.06 8.683L3.648 3.238L2.353 4.762L10.073 11.317L17.654 4.757L16.346 3.244L10.061 8.683H10.06Z"
+                  fill="#C4C4C4"
+                />
+              </svg>
+              <div>Send an Email</div>
+            </a>
+            <a href="">
+              <svg
+                width="20"
+                height="21"
+                viewBox="0 0 20 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 0.5C4.475 0.5 1.45954e-06 4.975 1.45954e-06 10.5C-0.00113276 12.5993 0.658815 14.6456 1.88622 16.3487C3.11362 18.0517 4.84615 19.3251 6.838 19.988C7.338 20.075 7.525 19.775 7.525 19.512C7.525 19.275 7.512 18.488 7.512 17.65C5 18.113 4.35 17.038 4.15 16.475C4.037 16.187 3.55 15.3 3.125 15.062C2.775 14.875 2.275 14.412 3.112 14.4C3.9 14.387 4.462 15.125 4.65 15.425C5.55 16.937 6.988 16.512 7.562 16.25C7.65 15.6 7.912 15.163 8.2 14.913C5.975 14.663 3.65 13.8 3.65 9.975C3.65 8.887 4.037 7.988 4.675 7.287C4.575 7.037 4.225 6.012 4.775 4.637C4.775 4.637 5.612 4.375 7.525 5.663C8.33906 5.43706 9.18017 5.32334 10.025 5.325C10.875 5.325 11.725 5.437 12.525 5.662C14.437 4.362 15.275 4.638 15.275 4.638C15.825 6.013 15.475 7.038 15.375 7.288C16.012 7.988 16.4 8.875 16.4 9.975C16.4 13.813 14.063 14.663 11.838 14.913C12.2 15.225 12.513 15.825 12.513 16.763C12.513 18.1 12.5 19.175 12.5 19.513C12.5 19.775 12.688 20.087 13.188 19.987C15.173 19.3168 16.8979 18.041 18.1199 16.3392C19.3419 14.6373 19.9994 12.5951 20 10.5C20 4.975 15.525 0.5 10 0.5Z"
+                  fill="currentColor"
+                />
+              </svg>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
+              <div>Github</div>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
