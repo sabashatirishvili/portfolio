@@ -14,6 +14,9 @@ class Technology(models.Model):
     choices = THREE_CATEGORIES,
     default= 'frontend')
   
+  def __str__ (self):
+    return self.name
+  
 
 class Project(models.Model):
   title = models.CharField(max_length=40)
@@ -21,3 +24,7 @@ class Project(models.Model):
   image_static_url = models.CharField(max_length=225, null=True)
   github_link = models.URLField(max_length=100)
   website_link = models.URLField(max_length=100)
+  technologies = models.ManyToManyField(Technology)
+
+  def __str__ (self):
+    return self.title

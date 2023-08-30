@@ -116,7 +116,11 @@
               <div class="desc">
                 {{project.description}}
               </div>
-              <div class="tech">React - Bootstrap - Styled Components</div>
+              <div class="tech">
+                {% for tech in project.technologies.all %}
+                  {{ tech.name }}{% if not forloop.last %} - {% endif %}
+                {% endfor %}
+              </div>
             </div>
           </div>
           {% endfor %}
@@ -163,5 +167,8 @@
         </div>
       </footer>
     </div>
+
+
+    <script src="{% static 'main/js/index.js' %}"></script>
   </body>
 </html>
